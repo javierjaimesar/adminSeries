@@ -1,5 +1,6 @@
 package vistas;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -19,6 +20,7 @@ public class VistaSeries extends javax.swing.JFrame {
     
     public VistaSeries() {
         initComponents();
+        
         setIcon();
         this.setTitle("Administrador de Series");
     }
@@ -27,13 +29,13 @@ public class VistaSeries extends javax.swing.JFrame {
     private void initComponents() {
 
         btnSalir = new javax.swing.JButton();
-        btnConsultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableSeries = new javax.swing.JTable();
         btnNuevo = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnAnular = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        jTextBuscar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -50,8 +52,6 @@ public class VistaSeries extends javax.swing.JFrame {
                 btnSalirMouseClicked(evt);
             }
         });
-
-        btnConsultar.setText("Consultar");
 
         jTableSeries.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,6 +132,14 @@ public class VistaSeries extends javax.swing.JFrame {
             }
         });
 
+        jTextBuscar.setForeground(new java.awt.Color(150, 150, 150));
+        jTextBuscar.setText("Buscar por titulo...");
+        jTextBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextBuscarFocusGained(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,9 +147,6 @@ public class VistaSeries extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnConsultar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNuevo)
@@ -152,14 +157,17 @@ public class VistaSeries extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSalir)))
+                        .addComponent(btnSalir))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnConsultar)
+                .addGap(7, 7, 7)
+                .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -295,6 +303,13 @@ public class VistaSeries extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
+    private void jTextBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextBuscarFocusGained
+        if(jTextBuscar.getText().equals("Buscar por titulo...")){
+            jTextBuscar.setText("");
+            jTextBuscar.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextBuscarFocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -336,13 +351,13 @@ public class VistaSeries extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAnular;
-    public javax.swing.JButton btnConsultar;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnModificar;
     public javax.swing.JButton btnNuevo;
     public javax.swing.JButton btnSalir;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTableSeries;
+    public javax.swing.JTextField jTextBuscar;
     // End of variables declaration//GEN-END:variables
 
 }

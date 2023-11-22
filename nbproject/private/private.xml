@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/AppsGraficas/DesafioDeProgramacion/src/vistas/VistaNuevo.java</file>
-            <file>file:/D:/AppsGraficas/DesafioDeProgramacion/src/vistas/VistaSeries.java</file>
-            <file>file:/D:/AppsGraficas/DesafioDeProgramacion/src/model/ConexionDB.java</file>
-            <file>file:/D:/AppsGraficas/DesafioDeProgramacion/src/vistas/VistaConexionDB.java</file>
-            <file>file:/D:/AppsGraficas/DesafioDeProgramacion/src/model/Serie.java</file>
-            <file>file:/D:/AppsGraficas/DesafioDeProgramacion/build.xml</file>
+            <file>file:/D:/AppsGraficas/adminSeries/src/vistas/VistaSeries.java</file>
+            <file>file:/D:/AppsGraficas/adminSeries/src/vistas/VistaConexionDB.java</file>
         </group>
     </open-files>
 </project-private>
