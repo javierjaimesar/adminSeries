@@ -233,7 +233,7 @@ public class VistaNuevo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Las estrellas son requeridas.");
         }else if(this.jTextPrecio.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "El precio es requerido.");
-        }else if(!this.jTextPrecio.getText().matches("[0-9]*")){
+        }else if(!this.jTextPrecio.getText().matches("[-+]?[0-9]*\\.?[0-9]+")){
             JOptionPane.showMessageDialog(null, "El campo 'Precio Alquiler' debe ser un valor numerico.");
         }else{
             String titulo = jTextTitulo.getText().trim();
