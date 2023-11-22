@@ -227,18 +227,22 @@ public class VistaNuevo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "La fecha de estreno es requerida.");
         }else if(this.jGenero.getActionCommand().isEmpty()){
             JOptionPane.showMessageDialog(null, "El genero es requerido.");
+        }else if(!this.jTextEstrellas.getText().matches("[0-9]*")){
+            JOptionPane.showMessageDialog(null, "El campo 'Estrellas' debe ser un valor numerico.");
         }else if(this.jTextEstrellas.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Las estrellas son requeridas.");
         }else if(this.jTextPrecio.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "El precio es requerido.");
+        }else if(!this.jTextPrecio.getText().matches("[0-9]*")){
+            JOptionPane.showMessageDialog(null, "El campo 'Precio Alquiler' debe ser un valor numerico.");
         }else{
-            String titulo = jTextTitulo.getText();
-            String descripcion = jTextDescripcion.getText();
+            String titulo = jTextTitulo.getText().trim();
+            String descripcion = jTextDescripcion.getText().trim();
             SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
             String fechaEstreno = date.format(this.jDate.getCalendar().getTime());
-            int estrellas = Integer.parseInt(jTextEstrellas.getText());
-            String genero = jGenero.getSelectedItem().toString();
-            double precioAlquiler = Double.parseDouble(jTextPrecio.getText());
+            int estrellas = Integer.parseInt(jTextEstrellas.getText().trim());
+            String genero = jGenero.getSelectedItem().toString().trim();
+            double precioAlquiler = Double.parseDouble(jTextPrecio.getText().trim());
             boolean atp = jAtp.isSelected();
 
             if(estrellas > 5 || estrellas < 0){

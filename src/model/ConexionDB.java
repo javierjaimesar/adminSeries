@@ -48,11 +48,11 @@ public class ConexionDB {
         return conexion;
     }
     
-    public void mostrar(TableModel model) throws SQLException{
+    public void mostrar(TableModel model, String filtro) throws SQLException{
         DefaultTableModel modelo = (DefaultTableModel) model;
         modelo.setNumRows(0);
         
-        for(Serie serie : obtenerProducto()){
+        for(Serie serie : obtenerSeries(filtro)){
             String precioModificado = "$ " + serie.getPrecioAlquiler();
             modelo.addRow(new Object[]{
                 serie.getId(),
@@ -67,8 +67,9 @@ public class ConexionDB {
             });
         }
     }
+
     
-    public static ArrayList<Serie> obtenerProducto() throws SQLException{
+    public static ArrayList<Serie> obtenerSeries(String filtro) throws SQLException{
         ArrayList<Serie> resultado = new ArrayList<>();
         
         String url = "jdbc:mysql://" + model.UrlDB.localHost + ":" + model.UrlDB.puerto + "/" + model.UrlDB.baseDeDatos;
@@ -78,7 +79,7 @@ public class ConexionDB {
         Connection c = DriverManager.getConnection(url,user,password);
         
         try {
-            PreparedStatement sql = c.prepareStatement("SELECT * FROM serie");
+            PreparedStatement sql = c.prepareStatement("SELECT * FROM serie WHERE titulo LIKE '%" + filtro + "%'");
             ResultSet res = sql.executeQuery();
             while(res.next()){
                 Serie serie = new Serie();
@@ -95,7 +96,7 @@ public class ConexionDB {
                 System.out.println(serie.getFechaEstreno());
             }
         } catch (Exception e) {
-            System.out.println("Error en Obtener: " + e);
+            System.out.println("Error en Obtener Series: " + e);
         }finally{
             c.close();
         }

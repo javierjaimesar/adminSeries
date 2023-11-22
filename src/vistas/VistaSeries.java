@@ -20,7 +20,7 @@ public class VistaSeries extends javax.swing.JFrame {
     
     public VistaSeries() {
         initComponents();
-        
+        model.TextPrompt placeHolder = new model.TextPrompt("Buscar por titulo...", jTextBuscar);
         setIcon();
         this.setTitle("Administrador de Series");
     }
@@ -110,6 +110,11 @@ public class VistaSeries extends javax.swing.JFrame {
                 btnNuevoMouseClicked(evt);
             }
         });
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnModificar.setText("Modificar");
         btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,10 +138,9 @@ public class VistaSeries extends javax.swing.JFrame {
         });
 
         jTextBuscar.setForeground(new java.awt.Color(150, 150, 150));
-        jTextBuscar.setText("Buscar por titulo...");
-        jTextBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextBuscarFocusGained(evt);
+        jTextBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextBuscarKeyReleased(evt);
             }
         });
 
@@ -194,7 +198,7 @@ public class VistaSeries extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         try {
-            conexionDB.mostrar(this.jTableSeries.getModel());
+            conexionDB.mostrar(this.jTableSeries.getModel(),jTextBuscar.getText());
         } catch (SQLException ex) {
             Logger.getLogger(VistaSeries.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -254,7 +258,7 @@ public class VistaSeries extends javax.swing.JFrame {
                     
                     try {
                         conexionDB.anularActivar(id, "AN");
-                        conexionDB.mostrar(this.jTableSeries.getModel());
+                        conexionDB.mostrar(this.jTableSeries.getModel(),jTextBuscar.getText());
                         JOptionPane.showMessageDialog(null, "La serie feue anulada.");
                     } catch (SQLException ex) {
                         Logger.getLogger(VistaSeries.class.getName()).log(Level.SEVERE, null, ex);
@@ -264,7 +268,7 @@ public class VistaSeries extends javax.swing.JFrame {
                 int id = Integer.parseInt("" + (this.jTableSeries.getValueAt(this.jTableSeries.getSelectedRow(), 0)));
                 try {
                     conexionDB.anularActivar(id, "AC");
-                    conexionDB.mostrar(this.jTableSeries.getModel());
+                    conexionDB.mostrar(this.jTableSeries.getModel(),jTextBuscar.getText());
                 } catch (SQLException ex) {
                     Logger.getLogger(VistaSeries.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -294,7 +298,7 @@ public class VistaSeries extends javax.swing.JFrame {
                 System.out.println(id);
                 try {
                     conexionDB.eliminar(id);
-                    conexionDB.mostrar(this.jTableSeries.getModel());
+                    conexionDB.mostrar(this.jTableSeries.getModel(),jTextBuscar.getText());
                     JOptionPane.showMessageDialog(null, "La serie feue eliminada.");
                 } catch (SQLException ex) {
                     Logger.getLogger(VistaSeries.class.getName()).log(Level.SEVERE, null, ex);
@@ -303,12 +307,18 @@ public class VistaSeries extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
-    private void jTextBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextBuscarFocusGained
-        if(jTextBuscar.getText().equals("Buscar por titulo...")){
-            jTextBuscar.setText("");
-            jTextBuscar.setForeground(Color.BLACK);
+    private void jTextBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextBuscarKeyReleased
+        System.out.println(jTextBuscar.getText());
+        try {
+            conexionDB.mostrar(this.jTableSeries.getModel(),jTextBuscar.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaSeries.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jTextBuscarFocusGained
+    }//GEN-LAST:event_jTextBuscarKeyReleased
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
     /**
      * @param args the command line arguments
