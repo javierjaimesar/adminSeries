@@ -5,9 +5,7 @@
         <group>
             <file>file:/D:/AppsGraficas/adminSeries/src/vistas/VistaNuevo.java</file>
             <file>file:/D:/AppsGraficas/adminSeries/src/vistas/VistaSeries.java</file>
-            <file>file:/D:/AppsGraficas/adminSeries/build.xml</file>
             <file>file:/D:/AppsGraficas/adminSeries/src/model/ConexionDB.java</file>
-            <file>file:/D:/AppsGraficas/adminSeries/nbproject/build-impl.xml</file>
             <file>file:/D:/AppsGraficas/adminSeries/src/vistas/VistaConexionDB.java</file>
         </group>
     </open-files>

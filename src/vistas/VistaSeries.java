@@ -233,7 +233,7 @@ public class VistaSeries extends javax.swing.JFrame {
                 String estado = String.valueOf("" + (this.jTableSeries.getValueAt(this.jTableSeries.getSelectedRow(), 8)));
                 System.out.println(estrellas);
                 if(estrellas > 5 || estrellas < 0){
-                    JOptionPane.showMessageDialog(null, "Ingrese un numerro entre 0 y 5");
+                    JOptionPane.showMessageDialog(null, "Ingrese un numero entre 0 y 5");
                 }else{
                     Serie serie = new Serie(titulo,descripcion,fechaEstreno,estrellas,genero,precioAlquiler,atp,estado);
                     try {
@@ -267,7 +267,7 @@ public class VistaSeries extends javax.swing.JFrame {
                     try {
                         conexionDB.anularActivar(id, "AN");
                         conexionDB.mostrar(this.jTableSeries.getModel(),jTextBuscar.getText());
-                        JOptionPane.showMessageDialog(null, "La serie feue anulada.");
+                        JOptionPane.showMessageDialog(null, "La serie fue anulada.");
                     } catch (SQLException ex) {
                         Logger.getLogger(VistaSeries.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -307,7 +307,7 @@ public class VistaSeries extends javax.swing.JFrame {
                 try {
                     conexionDB.eliminar(id);
                     conexionDB.mostrar(this.jTableSeries.getModel(),jTextBuscar.getText());
-                    JOptionPane.showMessageDialog(null, "La serie feue eliminada.");
+                    JOptionPane.showMessageDialog(null, "La serie fue eliminada.");
                 } catch (SQLException ex) {
                     Logger.getLogger(VistaSeries.class.getName()).log(Level.SEVERE, null, ex);
                 }
